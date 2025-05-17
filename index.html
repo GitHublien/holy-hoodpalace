@@ -10,802 +10,956 @@
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600&display=swap');
 
     :root {
-        --gold: #d4af37;
-        --gold-light: rgba(212, 175, 55, 0.15);
-        --gold-medium: rgba(212, 175, 55, 0.3);
-        --gold-dark: rgba(212, 175, 55, 0.7);
-        --black: #000;
-        --dark-gray: #111;
-        --light-gray: #aaa;
-        --white: #fff;
+    --gold: #d4af37;
+    --gold-light: rgba(212, 175, 55, 0.15);
+    --gold-medium: rgba(212, 175, 55, 0.3);
+    --gold-dark: rgba(212, 175, 55, 0.7);
+    --black: #000;
+    --dark-gray: #111;
+    --light-gray: #aaa;
+    --white: #fff;
     }
 
     * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
     }
 
     body {
-        font-family: 'Montserrat', sans-serif;
-        background: linear-gradient(135deg, var(--black), var(--dark-gray));
-        color: var(--white);
-        margin: 0;
-        padding: 0;
-        min-height: 100vh;
-        line-height: 1.6;
-        overflow-x: hidden;
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, var(--black), var(--dark-gray));
+    color: var(--white);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    line-height: 1.6;
+    overflow-x: hidden;
     }
 
     /* Overlay d'introduction */
     #intro-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: var(--black);
-        z-index: 9999;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        transition: opacity 1s ease;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--black);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: opacity 1s ease;
     }
 
     #intro-logo {
-        width: 0;
-        height: 0;
-        opacity: 0;
-        transition: all 2s cubic-bezier(0.19, 1, 0.22, 1);
+    width: 0;
+    height: 0;
+    opacity: 0;
+    transition: all 2s cubic-bezier(0.19, 1, 0.22, 1);
     }
 
     #intro-text {
-        font-family: 'Playfair Display', serif;
-        color: var(--gold);
-        font-size: 0;
-        opacity: 0;
-        text-align: center;
-        transition: all 1.5s ease;
-        margin-top: 20px;
-        text-transform: uppercase;
-        letter-spacing: 8px;
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    font-size: 0;
+    opacity: 0;
+    text-align: center;
+    transition: all 1.5s ease;
+    margin-top: 20px;
+    text-transform: uppercase;
+    letter-spacing: 8px;
     }
 
     /* Effet de parallaxe */
     .parallax-bg {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMDAwIiBmaWxsLW9wYWNpdHk9IjAuOSIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjEiIGZpbGw9IiNkNGFmMzciIGZpbGwtb3BhY2l0eT0iMC4xNSIvPjwvc3ZnPg==');
-        z-index: -1;
-        pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMDAwIiBmaWxsLW9wYWNpdHk9IjAuOSIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjEiIGZpbGw9IiNkNGFmMzciIGZpbGwtb3BhY2l0eT0iMC4xNSIvPjwvc3ZnPg==');
+    z-index: -1;
+    pointer-events: none;
     }
 
     .container {
-        max-width: 850px;
-        margin: 20px auto;
-        padding: 40px;
-        background-color: rgba(0, 0, 0, 0.7);
-        box-shadow: 0 20px 50px rgba(0,0,0,0.7);
-        border: 1px solid var(--gold-medium);
-        position: relative;
-        overflow: hidden;
-        border-radius: 12px;
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        z-index: 1;
-        opacity: 0;
-        transform: translateY(50px);
-        transition: opacity 1.5s ease, transform 1.5s ease;
+    max-width: 850px;
+    margin: 20px auto;
+    padding: 40px;
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+    border: 1px solid var(--gold-medium);
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1.5s ease, transform 1.5s ease;
     }
 
     .container.visible {
-        opacity: 1;
-        transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
     }
 
     .container::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 5px;
-        background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
     }
 
     .gold-dust {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSIwLjUiIGZpbGw9IiNkNGFmMzciIGZpbGwtb3BhY2l0eT0iMC4yIi8+PC9zdmc+');
-        opacity: 0.3;
-        pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSIwLjUiIGZpbGw9IiNkNGFmMzciIGZpbGwtb3BhY2l0eT0iMC4yIi8+PC9zdmc+');
+    opacity: 0.3;
+    pointer-events: none;
     }
 
     header {
-        text-align: center;
-        padding: 30px 0;
-        border-bottom: 1px solid var(--gold-medium);
-        margin-bottom: 40px;
-        position: relative;
+    text-align: center;
+    padding: 30px 0;
+    border-bottom: 1px solid var(--gold-medium);
+    margin-bottom: 40px;
+    position: relative;
     }
 
     header::after {
-        content: '';
-        position: absolute;
-        bottom: -1px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 200px;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
     }
 
     h1 {
-        font-family: 'Playfair Display', serif;
-        font-size: 48px;
-        margin: 0;
-        color: var(--gold);
-        text-transform: uppercase;
-        letter-spacing: 6px;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-        position: relative;
-        font-weight: 700;
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    margin: 0;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    position: relative;
+    font-weight: 700;
     }
 
     h1::after {
-        content: '';
-        position: absolute;
-        bottom: -10px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 120px;
-        height: 2px;
-        background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
     }
 
     h2 {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 30px;
-        color: var(--gold);
-        margin: 30px 0 15px;
-        font-weight: 500;
-        letter-spacing: 3px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    color: var(--gold);
+    margin: 30px 0 15px;
+    font-weight: 500;
+    letter-spacing: 3px;
     }
 
     h3 {
-        font-size: 20px;
-        color: var(--white);
-        margin: 15px 0;
-        font-style: italic;
-        font-weight: 300;
-        letter-spacing: 1px;
+    font-size: 20px;
+    color: var(--white);
+    margin: 15px 0;
+    font-style: italic;
+    font-weight: 300;
+    letter-spacing: 1px;
     }
 
     .event-details {
-        font-size: 18px;
-        color: var(--white);
-        margin: 20px 0;
-        letter-spacing: 1px;
-        font-family: 'Cormorant Garamond', serif;
-        position: relative;
-        display: inline-block;
-        padding: 0 30px;
+    font-size: 18px;
+    color: var(--white);
+    margin: 20px 0;
+    letter-spacing: 1px;
+    font-family: 'Cormorant Garamond', serif;
+    position: relative;
+    display: inline-block;
+    padding: 0 30px;
     }
 
     .event-details::before, .event-details::after {
-        content: '•';
-        color: var(--gold);
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 24px;
+    content: '•';
+    color: var(--gold);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
     }
 
     .event-details::before {
-        left: 0;
+    left: 0;
     }
 
     .event-details::after {
-        right: 0;
+    right: 0;
     }
 
     .logo-container {
-        margin: 30px auto;
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 40px;
+    margin: 30px auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
     }
 
     .logo {
-        max-width: 150px;
-        height: auto;
-        filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.5));
-        transition: all 0.4s ease;
+    max-width: 150px;
+    height: auto;
+    filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.5));
+    transition: all 0.4s ease;
     }
 
     .logo:hover {
-        transform: scale(1.08);
-        filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.7));
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.7));
     }
 
     .voice-logo {
-        max-width: 120px;
-        height: auto;
-        filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
-        transition: all 0.4s ease;
+    max-width: 120px;
+    height: auto;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+    transition: all 0.4s ease;
     }
 
     .voice-logo:hover {
-        transform: scale(1.08);
-        filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
     }
 
     .collaboration {
-        margin: 25px 0;
-        text-align: center;
-        font-style: italic;
-        color: var(--gold);
-        font-size: 18px;
-        letter-spacing: 1px;
+    margin: 25px 0;
+    text-align: center;
+    font-style: italic;
+    color: var(--gold);
+    font-size: 18px;
+    letter-spacing: 1px;
     }
 
     /* Compte à rebours */
     .countdown-container {
-        background: rgba(0, 0, 0, 0.5);
-        border-radius: 12px;
-        padding: 25px;
-        margin: 30px 0;
-        text-align: center;
-        border: 1px solid var(--gold-medium);
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
+    padding: 25px;
+    margin: 30px 0;
+    text-align: center;
+    border: 1px solid var(--gold-medium);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
 
     .countdown-title {
-        font-family: 'Playfair Display', serif;
-        color: var(--gold);
-        font-size: 24px;
-        margin-bottom: 20px;
-        letter-spacing: 2px;
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    font-size: 24px;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
     }
 
     .countdown {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
     }
 
     .countdown-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     }
 
     .countdown-value {
-        font-size: 36px;
-        font-weight: 700;
-        color: var(--white);
-        background: rgba(212, 175, 55, 0.1);
-        border-radius: 8px;
-        width: 70px;
-        height: 70px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        border: 1px solid var(--gold-medium);
-        position: relative;
-        overflow: hidden;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--white);
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: 8px;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    border: 1px solid var(--gold-medium);
+    position: relative;
+    overflow: hidden;
     }
 
     .countdown-value::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), transparent);
-        opacity: 0.5;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), transparent);
+    opacity: 0.5;
     }
 
     .countdown-label {
-        font-size: 14px;
-        color: var(--gold);
-        margin-top: 10px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
+    font-size: 14px;
+    color: var(--gold);
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     }
 
     .directors {
-        margin: 35px 0;
-        padding: 25px;
-        background: rgba(0, 0, 0, 0.5);
-        border-radius: 12px;
-        text-align: center;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        border: 1px solid var(--gold-medium);
-        transition: all 0.4s ease;
-        position: relative;
-        overflow: hidden;
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
+    margin: 35px 0;
+    padding: 25px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    border: 1px solid var(--gold-medium);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     }
 
     .directors::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, var(--gold-light), transparent);
-        opacity: 0.1;
-        transition: opacity 0.4s ease;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--gold-light), transparent);
+    opacity: 0.1;
+    transition: opacity 0.4s ease;
     }
 
     .directors:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
     }
 
     .directors:hover::before {
-        opacity: 0.2;
+    opacity: 0.2;
     }
 
     .director-title {
-        font-weight: 600;
-        color: var(--gold);
-        margin-bottom: 15px;
-        font-size: 22px;
-        letter-spacing: 1px;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 15px;
+    font-size: 22px;
+    letter-spacing: 1px;
     }
 
     .directors div:not(.director-title) {
-        margin: 8px 0;
-        font-size: 16px;
+    margin: 8px 0;
+    font-size: 16px;
     }
 
     .program {
-        margin-top: 50px;
-        position: relative;
+    margin-top: 50px;
+    position: relative;
     }
 
     .program::before {
-        content: '';
-        position: absolute;
-        left: 18px;
-        top: 0;
-        bottom: 0;
-        width: 1px;
-        background: linear-gradient(to bottom, transparent, var(--gold), var(--gold), transparent);
-        z-index: 0;
+    content: '';
+    position: absolute;
+    left: 18px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--gold), var(--gold), transparent);
+    z-index: 0;
     }
 
     /* Cartes de performances interactives */
     .performance {
-        margin: 35px 0;
-        padding: 25px;
-        background: rgba(0, 0, 0, 0.5);
-        border-left: 3px solid var(--gold);
-        border-radius: 0 12px 12px 0;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-        transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-        position: relative;
-        z-index: 1;
-        cursor: pointer;
-        overflow: hidden;
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
-        transform-style: preserve-3d;
-        perspective: 1000px;
+    margin: 35px 0;
+    padding: 25px;
+    background: rgba(0, 0, 0, 0.5);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 12px 12px 0;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    transform-style: preserve-3d;
+    perspective: 1000px;
     }
 
     .performance::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, var(--gold-light), transparent);
-        opacity: 0;
-        transition: opacity 0.4s ease;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--gold-light), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
     }
 
     .performance:hover {
-        transform: translateX(8px) translateZ(20px) rotateY(5deg);
-        box-shadow: 0 15px 30px rgba(0,0,0,0.4), -10px 10px 20px rgba(212, 175, 55, 0.1);
+    transform: translateX(8px) translateZ(20px) rotateY(5deg);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4), -10px 10px 20px rgba(212, 175, 55, 0.1);
     }
 
     .performance:hover::before {
-        opacity: 0.15;
+    opacity: 0.15;
     }
 
     .performer {
-        font-size: 24px;
-        font-weight: 600;
-        margin-bottom: 10px;
-        color: var(--white);
-        letter-spacing: 0.5px;
-        transition: transform 0.3s ease;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--white);
+    letter-spacing: 0.5px;
+    transition: transform 0.3s ease;
     }
 
     .performance:hover .performer {
-        transform: translateZ(10px);
+    transform: translateZ(10px);
     }
 
     .song {
-        font-size: 20px;
-        font-style: italic;
-        color: var(--gold);
-        transition: all 0.3s ease;
-        font-family: 'Cormorant Garamond', serif;
-        letter-spacing: 1px;
+    font-size: 20px;
+    font-style: italic;
+    color: var(--gold);
+    transition: all 0.3s ease;
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 1px;
     }
 
     .performance:hover .song {
-        transform: translateX(8px) translateZ(15px);
+    transform: translateX(8px) translateZ(15px);
     }
 
     .original {
-        font-size: 16px;
-        color: var(--light-gray);
-        margin-top: 5px;
-        transition: all 0.3s ease;
+    font-size: 16px;
+    color: var(--light-gray);
+    margin-top: 5px;
+    transition: all 0.3s ease;
     }
 
     .performance:hover .original {
-        color: var(--gold);
-        transform: translateZ(5px);
+    color: var(--gold);
+    transform: translateZ(5px);
     }
 
     .number {
-        display: inline-block;
-        width: 36px;
-        height: 36px;
-        background-color: var(--gold);
-        color: var(--black);
-        border-radius: 50%;
-        text-align: center;
-        line-height: 36px;
-        margin-right: 15px;
-        font-weight: bold;
-        box-shadow: 0 3px 8px rgba(0,0,0,0.4);
-        position: relative;
-        z-index: 2;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background-color: var(--gold);
+    color: var(--black);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 36px;
+    margin-right: 15px;
+    font-weight: bold;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .performance:hover .number {
-        transform: translateZ(25px) scale(1.1);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    transform: translateZ(25px) scale(1.1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
     }
 
     .number::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 44px;
-        height: 44px;
-        border-radius: 50%;
-        border: 1px solid var(--gold-medium);
-        z-index: -1;
-        transition: width 0.3s ease, height 0.3s ease;
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--gold-medium);
+    z-index: -1;
+    transition: width 0.3s ease, height 0.3s ease;
     }
 
     .performance:hover .number::before {
-        width: 50px;
-        height: 50px;
+    width: 50px;
+    height: 50px;
     }
 
     footer {
-        text-align: center;
-        margin-top: 60px;
-        padding: 30px 0;
-        font-size: 14px;
-        color: var(--light-gray);
-        border-top: 1px solid rgba(51, 51, 51, 0.5);
-        position: relative;
+    text-align: center;
+    margin-top: 60px;
+    padding: 30px 0;
+    font-size: 14px;
+    color: var(--light-gray);
+    border-top: 1px solid rgba(51, 51, 51, 0.5);
+    position: relative;
     }
 
     footer::before {
-        content: '';
-        position: absolute;
-        top: -1px;
-        left: 0;
-        right: 0;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
     }
 
     .venue {
-        margin-top: 15px;
-        font-style: italic;
-        font-size: 16px;
+    margin-top: 15px;
+    font-style: italic;
+    font-size: 16px;
     }
 
     .date {
-        margin-top: 5px;
-        color: var(--gold);
-        font-size: 16px;
-        font-weight: 500;
+    margin-top: 5px;
+    color: var(--gold);
+    font-size: 16px;
+    font-weight: 500;
     }
 
     .shine {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 50px;
-        height: 100%;
-        background: linear-gradient(to right,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.03) 50%,
-        rgba(255, 255, 255, 0) 100%);
-        transform: skewX(-25deg);
-        animation: shine 3s infinite;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 100%;
+    background: linear-gradient(to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.03) 50%,
+    rgba(255, 255, 255, 0) 100%);
+    transform: skewX(-25deg);
+    animation: shine 3s infinite;
     }
 
     @keyframes shine {
-        0% { left: -100px; }
-        100% { left: 200%; }
+    0% { left: -100px; }
+    100% { left: 200%; }
     }
 
     .performance.active {
-        background: rgba(0, 0, 0, 0.8);
-        border-left: 5px solid var(--gold);
-        transform: scale(1.02);
+    background: rgba(0, 0, 0, 0.8);
+    border-left: 5px solid var(--gold);
+    transform: scale(1.02);
     }
 
     .online-note {
-        background: rgba(0, 0, 0, 0.5);
-        padding: 18px;
-        border-radius: 12px;
-        margin: 25px 0;
-        text-align: center;
-        border: 1px solid var(--gold-medium);
-        font-size: 16px;
-        letter-spacing: 0.5px;
-        position: relative;
-        overflow: hidden;
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
+    background: rgba(0, 0, 0, 0.5);
+    padding: 18px;
+    border-radius: 12px;
+    margin: 25px 0;
+    text-align: center;
+    border: 1px solid var(--gold-medium);
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     }
 
     .online-note::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, var(--gold-light), transparent);
-        opacity: 0.1;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--gold-light), transparent);
+    opacity: 0.1;
     }
 
     .online-note i {
-        color: var(--gold);
-        margin-right: 8px;
+    color: var(--gold);
+    margin-right: 8px;
     }
 
     .online-note .note-detail {
-        display: block;
-        font-size: 14px;
-        color: var(--light-gray);
-        margin-top: 5px;
+    display: block;
+    font-size: 14px;
+    color: var(--light-gray);
+    margin-top: 5px;
     }
 
     .iframe-container {
-        position: relative;
-        width: 100%;
-        height: 80px;
-        margin-top: 15px;
-        border-radius: 8px;
-        overflow: hidden;
-        transition: all 0.5s ease;
-        opacity: 1;
-        max-height: 80px;
-        border: 1px solid var(--gold-medium);
+    position: relative;
+    width: 100%;
+    height: 0;
+    margin-top: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    opacity: 0;
+    max-height: 0;
+    border: 1px solid var(--gold-medium);
     }
 
     .performance.active .iframe-container {
-        height: 80px;
-        opacity: 1;
-        max-height: 80px;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    height: 80px;
+    opacity: 1;
+    max-height: 80px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
     }
 
     .iframe-container iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: none;
-        border-radius: 8px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     }
 
     /* Effet de scintillement pour le titre */
     @keyframes titleGlow {
-        0%, 100% { text-shadow: 0 0 5px rgba(212, 175, 55, 0.3); }
-        50% { text-shadow: 0 0 20px rgba(212, 175, 55, 0.6); }
+    0%, 100% { text-shadow: 0 0 5px rgba(212, 175, 55, 0.3); }
+    50% { text-shadow: 0 0 20px rgba(212, 175, 55, 0.6); }
     }
 
     h1 {
-        animation: titleGlow 5s infinite;
+    animation: titleGlow 5s infinite;
     }
 
     /* Effet de bordure brillante */
     @keyframes borderGlow {
-        0%, 100% { border-color: rgba(212, 175, 55, 0.3); }
-        50% { border-color: rgba(212, 175, 55, 0.6); }
+    0%, 100% { border-color: rgba(212, 175, 55, 0.3); }
+    50% { border-color: rgba(212, 175, 55, 0.6); }
     }
 
     .directors, .online-note, .countdown-container {
-        animation: borderGlow 4s infinite alternate;
+    animation: borderGlow 4s infinite alternate;
     }
 
     /* Confettis */
     .confetti {
-        position: fixed;
-        width: 10px;
-        height: 10px;
-        background-color: var(--gold);
-        opacity: 0.8;
-        top: 0;
-        z-index: -1;
-        animation: confetti-fall linear forwards;
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background-color: var(--gold);
+    opacity: 0.8;
+    top: 0;
+    z-index: -1;
+    animation: confetti-fall linear forwards;
     }
 
     @keyframes confetti-fall {
-        0% {
-            transform: translateY(-100px) rotate(0deg);
-            opacity: 1;
-        }
-        100% {
-            transform: translateY(calc(100vh + 100px)) rotate(360deg);
-            opacity: 0;
-        }
+    0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 1;
+    }
+    100% {
+    transform: translateY(calc(100vh + 100px)) rotate(360deg);
+    opacity: 0;
+    }
     }
 
     /* Canvas pour les particules */
     #particles-canvas {
-        position: fixed;
-        top: 0;
-        left: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    }
+
+    /* Contrôles audio professionnels */
+    .audio-controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 20px 0;
+        background: rgba(0, 0, 0, 0.6);
+        padding: 15px;
+        border-radius: 50px;
+        border: 1px solid var(--gold-medium);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .audio-controls button {
+        background: none;
+        border: none;
+        color: var(--gold);
+        font-size: 24px;
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+        margin: 0 5px;
+        outline: none;
+    }
+
+    .audio-controls button:hover {
+        background: rgba(212, 175, 55, 0.2);
+        transform: scale(1.1);
+    }
+
+    .audio-controls button:active {
+        transform: scale(0.95);
+    }
+
+    .audio-controls .volume-container {
+        display: flex;
+        align-items: center;
+        width: 120px;
+        margin-left: 10px;
+    }
+
+    .audio-controls .volume-slider {
+        -webkit-appearance: none;
         width: 100%;
-        height: 100%;
-        z-index: -1;
-        pointer-events: none;
+        height: 4px;
+        border-radius: 2px;
+        background: rgba(212, 175, 55, 0.3);
+        outline: none;
+        margin: 0 10px;
+    }
+
+    .audio-controls .volume-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: var(--gold);
+        cursor: pointer;
+        box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    }
+
+    .audio-controls .volume-slider::-moz-range-thumb {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: var(--gold);
+        cursor: pointer;
+        box-shadow: 0 0 5px rgba(0,0,0,0.5);
+        border: none;
+    }
+
+    .audio-info {
+        text-align: center;
+        font-size: 14px;
+        color: var(--light-gray);
+        margin-top: 10px;
+        font-style: italic;
+    }
+
+    .now-playing {
+        background: rgba(212, 175, 55, 0.1);
+        color: var(--gold);
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-size: 14px;
+        display: inline-block;
+        margin-top: 10px;
+        border: 1px solid var(--gold-medium);
+        box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+    }
+
+    .now-playing.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Barre de recherche */
+    .search-container {
+        margin: 30px 0;
+        text-align: center;
+    }
+
+    .search-box {
+        background: rgba(0, 0, 0, 0.5);
+        border: 1px solid var(--gold-medium);
+        border-radius: 30px;
+        padding: 12px 20px;
+        width: 100%;
+        max-width: 400px;
+        color: var(--white);
+        font-size: 16px;
+        outline: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .search-box:focus {
+        border-color: var(--gold);
+        box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+    }
+
+    .search-box::placeholder {
+        color: var(--light-gray);
+        opacity: 0.7;
+    }
+
+    /* Instructions */
+    .instructions {
+        background: rgba(212, 175, 55, 0.1);
+        border: 1px solid var(--gold-medium);
+        border-radius: 12px;
+        padding: 15px;
+        margin: 20px 0;
+        text-align: center;
+        font-size: 15px;
+        color: var(--gold);
+    }
+
+    .instructions i {
+        margin-right: 8px;
     }
 
     /* Ajustements pour les appareils mobiles */
     @media (max-width: 768px) {
-        .container {
-            padding: 20px;
-            margin: 10px;
-            width: auto;
-        }
+    .container {
+    padding: 20px;
+    margin: 10px;
+    width: auto;
+    }
 
-        h1 {
-            font-size: 32px;
-            letter-spacing: 3px;
-        }
+    h1 {
+    font-size: 32px;
+    letter-spacing: 3px;
+    }
 
-        h2 {
-            font-size: 24px;
-        }
+    h2 {
+    font-size: 24px;
+    }
 
-        .performance {
-            padding: 15px;
-            margin: 25px 0;
-        }
+    .performance {
+    padding: 15px;
+    margin: 25px 0;
+    }
 
-        .performer {
-            font-size: 20px;
-        }
+    .performer {
+    font-size: 20px;
+    }
 
-        .song {
-            font-size: 18px;
-        }
+    .song {
+    font-size: 18px;
+    }
 
-        .logo-container {
-            gap: 20px;
-        }
+    .logo-container {
+    gap: 20px;
+    }
 
-        .logo, .voice-logo {
-            max-width: 100px;
-        }
+    .logo, .voice-logo {
+    max-width: 100px;
+    }
 
-        .countdown-value {
-            width: 60px;
-            height: 60px;
-            font-size: 28px;
-        }
+    .countdown-value {
+    width: 60px;
+    height: 60px;
+    font-size: 28px;
+    }
 
-        .countdown {
-            gap: 10px;
-        }
+    .countdown {
+    gap: 10px;
+    }
 
-        .iframe-container {
-            padding-bottom: 70px;
-        }
+    .iframe-container {
+    padding-bottom: 70px;
+    }
     }
 
     /* Ajustements pour les très petits écrans */
     @media (max-width: 480px) {
-        h1 {
-            font-size: 28px;
-            letter-spacing: 2px;
-        }
+    h1 {
+    font-size: 28px;
+    letter-spacing: 2px;
+    }
 
-        .event-details {
-            padding: 0 15px;
-        }
+    .event-details {
+    padding: 0 15px;
+    }
 
-        .event-details::before, .event-details::after {
-            display: none;
-        }
+    .event-details::before, .event-details::after {
+    display: none;
+    }
 
-        .number {
-            width: 30px;
-            height: 30px;
-            line-height: 30px;
-            margin-right: 10px;
-        }
+    .number {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    margin-right: 10px;
+    }
 
-        .performer {
-            font-size: 18px;
-        }
+    .performer {
+    font-size: 18px;
+    }
 
-        .song {
-            font-size: 16px;
-        }
+    .song {
+    font-size: 16px;
+    }
 
-        .original {
-            font-size: 14px;
-        }
+    .original {
+    font-size: 14px;
+    }
 
-        .program::before {
-            left: 15px;
-        }
+    .program::before {
+    left: 15px;
+    }
 
-        .countdown-value {
-            width: 50px;
-            height: 50px;
-            font-size: 24px;
-        }
+    .countdown-value {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    }
 
-        .countdown-label {
-            font-size: 12px;
-        }
+    .countdown-label {
+    font-size: 12px;
+    }
 
-        .iframe-container {
-            padding-bottom: 60px;
-        }
+    .iframe-container {
+    padding-bottom: 60px;
+    }
     }
     </style>
 </head>
 <body>
     <!-- Overlay d'introduction -->
     <div id="intro-overlay">
-        <img id="intro-logo" src="boheme logo.png" alt="Bohème Production">
-        <div id="intro-text">HOLY HOODPALACE</div>
+    <img id="intro-logo" src="boheme logo.png" alt="Bohème Production">
+    <div id="intro-text">HOLY HOODPALACE</div>
     </div>
 
     <!-- Canvas pour les particules -->
@@ -814,398 +968,644 @@
     <!-- Effet de parallaxe -->
     <div class="parallax-bg"></div>
 
+    <!-- Audio de fond -->
+    <audio id="background-music" loop>
+        <source src="Violon d'amour .mp3" type="audio/mpeg">
+        Votre navigateur ne supporte pas l'élément audio.
+    </audio>
+
     <div class="container">
-        <div class="gold-dust"></div>
+    <div class="gold-dust"></div>
 
-        <header data-aos="fade-down" data-aos-duration="1200">
-            <h1>HOLY HOODPALACE</h1>
-            <h2>FESTIVAL DE CANNES</h2>
-            <h3>Présenté par Pascal Terrien</h3>
-            <div class="event-details">17 Mai 2025 - Palais Massier</div>
+    <header data-aos="fade-down" data-aos-duration="1200">
+    <h1>HOLY HOODPALACE</h1>
+    <h2>FESTIVAL DE CANNES</h2>
+    <h3>Présenté par Pascal Terrien</h3>
+    <div class="event-details">17 Mai 2025 - Palais Massier</div>
 
-            <div class="collaboration">En collaboration avec</div>
-            <div class="logo-container">
-                <img src="boheme logo.png" alt="Bohème Production" class="logo" data-aos="zoom-in" data-aos-delay="200">
-                <img src="The voice logo.png" alt="The Voice" class="voice-logo" data-aos="zoom-in" data-aos-delay="400">
-                <img src="The voice Kids.png" alt="The Voice Kids" class="voice-logo" data-aos="zoom-in" data-aos-delay="600">
-            </div>
-        </header>
+    <div class="collaboration">En collaboration avec</div>
+    <div class="logo-container">
+    <img src="boheme logo.png" alt="Bohème Production" class="logo" data-aos="zoom-in" data-aos-delay="200">
+    <img src="The voice logo.png" alt="The Voice" class="voice-logo" data-aos="zoom-in" data-aos-delay="400">
+    <img src="The voice Kids.png" alt="The Voice Kids" class="voice-logo" data-aos="zoom-in" data-aos-delay="600">
+    </div>
+    </header>
 
-        <!-- Compte à rebours -->
-        <div class="countdown-container" data-aos="fade-up" data-aos-duration="1000">
-            <div class="countdown-title">RENDEZ-VOUS DANS</div>
-            <div class="countdown">
-                <div class="countdown-item">
-                    <div class="countdown-value" id="days">00</div>
-                    <div class="countdown-label">Jours</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-value" id="hours">00</div>
-                    <div class="countdown-label">Heures</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-value" id="minutes">00</div>
-                    <div class="countdown-label">Minutes</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-value" id="seconds">00</div>
-                    <div class="countdown-label">Secondes</div>
-                </div>
-            </div>
+    <!-- Contrôles audio -->
+    <div class="audio-controls">
+        <button id="play-pause-btn"><i class="fas fa-play"></i></button>
+        <button id="stop-btn"><i class="fas fa-stop"></i></button>
+        <div class="volume-container">
+            <i class="fas fa-volume-down"></i>
+            <input type="range" class="volume-slider" id="volume-slider" min="0" max="1" step="0.1" value="0.5">
+            <i class="fas fa-volume-up"></i>
         </div>
+    </div>
+    <div class="audio-info">Instrumental par Mickaël Guedj</div>
+    <div id="now-playing" class="now-playing">Lecture en cours : <span id="current-track">Musique de fond</span></div>
 
-        <div class="online-note" data-aos="fade-up" data-aos-duration="800">
-            <i class="fas fa-music"></i> Version en ligne avec streaming audio depuis Google Drive
-            <span class="note-detail">Cliquez sur une performance pour écouter</span>
-        </div>
+    <!-- Instructions -->
+    <div class="instructions">
+        <i class="fas fa-info-circle"></i> Cliquez sur le nom d'un artiste pour écouter son instrumental
+    </div>
 
-        <div class="directors" data-aos="fade-up" data-aos-duration="800">
-            <div class="director-title">Bohème Production</div>
-            <div>Directeur : Patrick Elie Féré</div>
-            <div>Directeur Artistique : Mickaël Guedj</div>
-        </div>
+    <!-- Barre de recherche -->
+    <div class="search-container">
+        <input type="text" class="search-box" id="search-box" placeholder="Rechercher un artiste ou un titre...">
+    </div>
 
-        <div class="program">
-            <div class="performance" data-aos="fade-left" data-aos-duration="800" data-aos-delay="100">
-                <div class="shine"></div>
-                <div><span class="number">1</span><span class="performer">Patrice</span></div>
-                <div class="song">L'envie d'aimer</div>
-                <div class="original">Les Dix Commandements</div>
-                <div class="iframe-container">
-                    <iframe src="https://drive.google.com/file/d/1r9JKWg7gt0jeCnmjudBmPpc1vaO9NXhz/preview" allow="autoplay"></iframe>
-                </div>
-            </div>
+    <!-- Compte à rebours pour l'arrivée des artistes -->
+    <div class="countdown-container" data-aos="fade-up" data-aos-duration="1000">
+    <div class="countdown-title">ARRIVÉE DES ARTISTES</div>
+    <div class="countdown" id="artists-countdown">
+    <div class="countdown-item">
+    <div class="countdown-value" id="artists-days">00</div>
+    <div class="countdown-label">Jours</div>
+    </div>
+    <div class="countdown-item">
+    <div class="countdown-value" id="artists-hours">00</div>
+    <div class="countdown-label">Heures</div>
+    </div>
+    <div class="countdown-item">
+    <div class="countdown-value" id="artists-minutes">00</div>
+    <div class="countdown-label">Minutes</div>
+    </div>
+    <div class="countdown-item">
+    <div class="countdown-value" id="artists-seconds">00</div>
+    <div class="countdown-label">Secondes</div>
+    </div>
+    </div>
+    </div>
 
-            <div class="performance" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
-                <div class="shine"></div>
-                <div><span class="number">2</span><span class="performer">Maëlys</span></div>
-                <div class="song">Listen</div>
-                <div class="original">Beyoncé</div>
-                <div class="iframe-container">
-                    <iframe src="https://drive.google.com/file/d/1aVVbFY5vy8YR7bY6Ytd0IbNl-QpYJSkZ/preview" allow="autoplay"></iframe>
-                </div>
-            </div>
+    <!-- Compte à rebours pour le début de la soirée -->
+    <div class="countdown-container" data-aos="fade-up" data-aos-duration="1000">
+    <div class="countdown-title">DÉBUT DE SOIRÉE</div>
+    <div class="countdown" id="show-countdown">
+    <div class="countdown-item">
+    <div class="countdown-value" id="show-days">00</div>
+    <div class="countdown-label">Jours</div>
+    </div>
+    <div class="countdown-item">
+    <div class="countdown-value" id="show-hours">00</div>
+    <div class="countdown-label">Heures</div>
+    </div>
+    <div class="countdown-item">
+    <div class="countdown-value" id="show-minutes">00</div>
+    <div class="countdown-label">Minutes</div>
+    </div>
+    <div class="countdown-item">
+    <div class="countdown-value" id="show-seconds">00</div>
+    <div class="countdown-label">Secondes</div>
+    </div>
+    </div>
+    </div>
 
-            <div class="performance" data-aos="fade-left" data-aos-duration="800" data-aos-delay="300">
-                <div class="shine"></div>
-                <div><span class="number">3</span><span class="performer">Gianni</span></div>
-                <div class="song">Stay</div>
-                <div class="original">Rihanna</div>
-                <div class="iframe-container">
-                    <iframe src="https://drive.google.com/file/d/14qboEZM0qdx4Uj8SvmkXvQE9016pnuok/preview" allow="autoplay"></iframe>
-                </div>
-            </div>
+    <!-- Compte à rebours pour l'heure estimée de la performance -->
+    <div class="countdown-container" data-aos="fade-up" data-aos-duration="1000">
+    <div class="countdown-title">HEURE ESTIMÉE DE LA PERFORMANCE</div>
+    <div class="countdown" id="performance-countdown">
+    <div class="countdown-item">
+    <div class="countdown-value" id="performance-days">00</div>
+    <div class="countdown-label">Jours</div>
+    </div>
+    <div class="countdown-item">
+    <div class="countdown-value" id="performance-hours">00</div>
+    <div class="countdown-label">Heures</div>
+    </div>
+    <div class="countdown-item">
+    <div class="countdown-value" id="performance-minutes">00</div>
+    <div class="countdown-label">Minutes</div>
+    </div>
+    <div class="countdown-item">
+    <div class="countdown-value" id="performance-seconds">00</div>
+    <div class="countdown-label">Secondes</div>
+    </div>
+    </div>
+    </div>
 
-            <div class="performance" data-aos="fade-left" data-aos-duration="800" data-aos-delay="400">
-                <div class="shine"></div>
-                <div><span class="number">4</span><span class="performer">Mickaël</span></div>
-                <div class="song">Con te partirò</div>
-                <div class="original">Andrea Bocelli</div>
-                <div class="iframe-container">
-                    <iframe src="https://drive.google.com/file/d/1hqtunmCAWipLgo6j4F0FxfRfvY07zGz1/preview" allow="autoplay"></iframe>
-                </div>
-            </div>
+    <div class="online-note" data-aos="fade-up" data-aos-duration="800">
+    <i class="fas fa-music"></i> Version en ligne avec streaming audio depuis Google Drive
+    <span class="note-detail">Cliquez sur une performance pour écouter</span>
+    </div>
 
-            <div class="performance" data-aos="fade-left" data-aos-duration="800" data-aos-delay="500">
-                <div class="shine"></div>
-                <div><span class="number">5</span><span class="performer">Manon</span></div>
-                <div class="song">Easy on me</div>
-                <div class="original">Adele</div>
-                <div class="iframe-container">
-                    <iframe src="https://drive.google.com/file/d/1XVQfB4SZrui9BVU9rsU4KAMQyN2taoYb/preview" allow="autoplay"></iframe>
-                </div>
-            </div>
+    <div class="directors" data-aos="fade-up" data-aos-duration="800">
+    <div class="director-title">Bohème Production</div>
+    <div>Directeur : Patrick Elie Féré</div>
+    <div>Directeur Artistique : Mickaël Guedj</div>
+    </div>
 
-            <div class="performance" data-aos="fade-left" data-aos-duration="800" data-aos-delay="600">
-                <div class="shine"></div>
-                <div><span class="number">6</span><span class="performer">Elie, Patrice & Mickaël</span></div>
-                <div class="song">Belle</div>
-                <div class="original">Notre-Dame de Paris</div>
-                <div class="iframe-container">
-                    <iframe src="https://drive.google.com/file/d/1tXTAND6FFlFkaeFcC6eNNqOCCfl5lMSP/preview" allow="autoplay"></iframe>
-                </div>
-            </div>
+    <div class="program">
+    <div class="performance" data-aos="fade-left" data-aos-duration="800" data-aos-delay="100">
+    <div class="shine"></div>
+    <div><span class="number">1</span><span class="performer">Patrice</span></div>
+    <div class="song">L'envie d'aimer</div>
+    <div class="original">Les Dix Commandements</div>
+    <div class="iframe-container">
+    <iframe src="https://drive.google.com/file/d/1r9JKWg7gt0jeCnmjudBmPpc1vaO9NXhz/preview" allow="autoplay"></iframe>
+    </div>
+    </div>
 
-            <div class="performance" data-aos="fade-left" data-aos-duration="800" data-aos-delay="700">
-                <div class="shine"></div>
-                <div><span class="number">7</span><span class="performer">Mickaël</span></div>
-                <div class="song">L'envie</div>
-                <div class="original">Johnny Hallyday</div>
-                <div class="iframe-container">
-                    <iframe src="https://drive.google.com/file/d/17THWo-HAkYuqPWH61EvP3yomyoaA72bI/preview" allow="autoplay"></iframe>
-                </div>
-            </div>
+    <div class="performance" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
+    <div class="shine"></div>
+    <div><span class="number">2</span><span class="performer">Maëlys</span></div>
+    <div class="song">Listen</div>
+    <div class="original">Beyoncé</div>
+    <div class="iframe-container">
+    <iframe src="https://drive.google.com/file/d/1aVVbFY5vy8YR7bY6Ytd0IbNl-QpYJSkZ/preview" allow="autoplay"></iframe>
+    </div>
+    </div>
 
-            <div class="performance" data-aos="fade-left" data-aos-duration="800" data-aos-delay="800">
-                <div class="shine"></div>
-                <div><span class="number">8</span><span class="performer">Gianni</span></div>
-                <div class="song">Glimpse of Us</div>
-                <div class="original">Joji</div>
-                <div class="iframe-container">
-                    <iframe src="https://drive.google.com/file/d/1W5cgyHpKkskpv3Wxr8imAbiiUMZUqwgB/preview" allow="autoplay"></iframe>
-                </div>
-            </div>
-        </div>
+    <div class="performance" data-aos="fade-left" data-aos-duration="800" data-aos-delay="300">
+    <div class="shine"></div>
+    <div><span class="number">3</span><span class="performer">Gianni</span></div>
+    <div class="song">Stay</div>
+    <div class="original">Rihanna</div>
+    <div class="iframe-container">
+    <iframe src="https://drive.google.com/file/d/14qboEZM0qdx4Uj8SvmkXvQE9016pnuok/preview" allow="autoplay"></iframe>
+    </div>
+    </div>
 
-        <footer data-aos="fade-up" data-aos-duration="800">
-            <div>HOLY HOODPALACE - FESTIVAL DE CANNES</div>
-            <div class="venue">Palais Massier</div>
-            <div class="date">17 Mai 2025</div>
-        </footer>
+    <div class="performance" data-aos="fade-left" data-aos-duration="800" data-aos-delay="400">
+    <div class="shine"></div>
+    <div><span class="number">4</span><span class="performer">Mickaël</span></div>
+    <div class="song">Con te partirò</div>
+    <div class="original">Andrea Bocelli</div>
+    <div class="iframe-container">
+    <iframe src="https://drive.google.com/file/d/1hqtunmCAWipLgo6j4F0FxfRfvY07zGz1/preview" allow="autoplay"></iframe>
+    </div>
+    </div>
+
+    <div class="performance" data-aos="fade-left" data-aos-duration="800" data-aos-delay="500">
+    <div class="shine"></div>
+    <div><span class="number">5</span><span class="performer">Manon</span></div>
+    <div class="song">Easy on me</div>
+    <div class="original">Adele</div>
+    <div class="iframe-container">
+    <iframe src="https://drive.google.com/file/d/1XVQfB4SZrui9BVU9rsU4KAMQyN2taoYb/preview" allow="autoplay"></iframe>
+    </div>
+    </div>
+
+    <div class="performance" data-aos="fade-left" data-aos-duration="800" data-aos-delay="600">
+    <div class="shine"></div>
+    <div><span class="number">6</span><span class="performer">Elie, Patrice & Mickaël</span></div>
+    <div class="song">Belle</div>
+    <div class="original">Notre-Dame de Paris</div>
+    <div class="iframe-container">
+    <iframe src="https://drive.google.com/file/d/1tXTAND6FFlFkaeFcC6eNNqOCCfl5lMSP/preview" allow="autoplay"></iframe>
+    </div>
+    </div>
+
+    <div class="performance" data-aos="fade-left" data-aos-duration="800" data-aos-delay="700">
+    <div class="shine"></div>
+    <div><span class="number">7</span><span class="performer">Mickaël</span></div>
+    <div class="song">L'envie</div>
+    <div class="original">Johnny Hallyday</div>
+    <div class="iframe-container">
+    <iframe src="https://drive.google.com/file/d/17THWo-HAkYuqPWH61EvP3yomyoaA72bI/preview" allow="autoplay"></iframe>
+    </div>
+    </div>
+
+    <div class="performance" data-aos="fade-left" data-aos-duration="800" data-aos-delay="800">
+    <div class="shine"></div>
+    <div><span class="number">8</span><span class="performer">Gianni</span></div>
+    <div class="song">Glimpse of Us</div>
+    <div class="original">Joji</div>
+    <div class="iframe-container">
+    <iframe src="https://drive.google.com/file/d/1W5cgyHpKkskpv3Wxr8imAbiiUMZUqwgB/preview" allow="autoplay"></iframe>
+    </div>
+    </div>
+    </div>
+
+    <footer data-aos="fade-up" data-aos-duration="800">
+    <div>HOLY HOODPALACE - FESTIVAL DE CANNES</div>
+    <div class="venue">Palais Massier</div>
+    <div class="date">17 Mai 2025</div>
+    </footer>
     </div>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
-        // Animation d'introduction
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialiser AOS
-            AOS.init({
-                once: true,
-                offset: 100
-            });
-
-            // Animation d'introduction
-            setTimeout(function() {
-                const introLogo = document.getElementById('intro-logo');
-                introLogo.style.width = '200px';
-                introLogo.style.height = 'auto';
-                introLogo.style.opacity = '1';
-
-                setTimeout(function() {
-                    const introText = document.getElementById('intro-text');
-                    introText.style.fontSize = '36px';
-                    introText.style.opacity = '1';
-
-                    setTimeout(function() {
-                        const introOverlay = document.getElementById('intro-overlay');
-                        introOverlay.style.opacity = '0';
-
-                        setTimeout(function() {
-                            introOverlay.style.display = 'none';
-                            document.querySelector('.container').classList.add('visible');
-                            createConfetti();
-                        }, 1000);
-                    }, 2000);
-                }, 1500);
-            }, 500);
-
-            // Animation des performances au survol
-            const performances = document.querySelectorAll('.performance');
-            performances.forEach(perf => {
-                perf.addEventListener('mouseenter', function() {
-                    this.querySelector('.shine').style.animation = 'shine 1.5s';
-                });
-
-                perf.addEventListener('mouseleave', function() {
-                    this.querySelector('.shine').style.animation = 'none';
-                    setTimeout(() => {
-                        this.querySelector('.shine').style.animation = 'shine 3s infinite';
-                    }, 10);
-                });
-
-                // Gestion du clic pour afficher/masquer l'iframe
-                perf.addEventListener('click', function() {
-                    // Fermer toutes les autres performances
-                    performances.forEach(p => {
-                        if (p !== this && p.classList.contains('active')) {
-                            p.classList.remove('active');
-                        }
-                    });
-
-                    // Basculer l'état actif de cette performance
-                    this.classList.toggle('active');
-                });
-            });
-
-            // Effet de parallaxe
-            window.addEventListener('scroll', function() {
-                const scrollY = window.scrollY;
-                document.querySelector('.parallax-bg').style.transform = `translateY(${scrollY * 0.3}px)`;
-            });
-
-            // Compte à rebours
-            const countdownDate = new Date('May 17, 2025 16:00:00').getTime();
-
-            function updateCountdown() {
-                const now = new Date().getTime();
-                const distance = countdownDate - now;
-
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                document.getElementById('days').innerText = days.toString().padStart(2, '0');
-                document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
-                document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
-                document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
-
-                if (distance < 0) {
-                    clearInterval(countdownInterval);
-                    document.getElementById('days').innerText = '00';
-                    document.getElementById('hours').innerText = '00';
-                    document.getElementById('minutes').innerText = '00';
-                    document.getElementById('seconds').innerText = '00';
-
-                    const countdownTitle = document.querySelector('.countdown-title');
-                    countdownTitle.innerText = "C'EST AUJOURD'HUI !";
-                    countdownTitle.style.color = '#ff9d00';
-                }
-            }
-
-            updateCountdown();
-            const countdownInterval = setInterval(updateCountdown, 1000);
-
-            // Initialisation des particules
-            initParticles();
+    // Animation d'introduction
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialiser AOS
+        AOS.init({
+            once: true,
+            offset: 100
         });
 
-        // Fonction pour créer des confettis
-        function createConfetti() {
-            const confettiCount = 100;
-            const container = document.body;
+        // Animation d'introduction
+        setTimeout(function() {
+            // Afficher d'abord le logo Bohème
+            const introLogo = document.getElementById('intro-logo');
+            introLogo.style.width = '200px';
+            introLogo.style.height = 'auto';
+            introLogo.style.opacity = '1';
 
-            for (let i = 0; i < confettiCount; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
+            setTimeout(function() {
+                // Afficher ensuite le logo The Voice
+                const voiceLogo = document.createElement('img');
+                voiceLogo.src = 'The voice logo.png';
+                voiceLogo.alt = 'The Voice';
+                voiceLogo.style.width = '0';
+                voiceLogo.style.height = 'auto';
+                voiceLogo.style.opacity = '0';
+                voiceLogo.style.transition = 'all 1.5s ease';
+                voiceLogo.style.margin = '20px';
+                document.getElementById('intro-overlay').appendChild(voiceLogo);
 
-                // Propriétés aléatoires
-                const size = Math.random() * 10 + 5;
-                const left = Math.random() * 100;
-                const delay = Math.random() * 5;
-                const duration = Math.random() * 5 + 5;
-                const color = Math.random() > 0.5 ? '#d4af37' : '#ffffff';
-                const opacity = Math.random() * 0.7 + 0.3;
-
-                confetti.style.width = `${size}px`;
-                confetti.style.height = `${size}px`;
-                confetti.style.left = `${left}%`;
-                confetti.style.animationDelay = `${delay}s`;
-                confetti.style.animationDuration = `${duration}s`;
-                confetti.style.backgroundColor = color;
-                confetti.style.opacity = opacity;
-
-                // Forme aléatoire
-                if (Math.random() > 0.5) {
-                    confetti.style.borderRadius = '50%';
-                } else if (Math.random() > 0.5) {
-                    confetti.style.borderRadius = '0';
-                    confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
-                } else {
-                    confetti.style.width = `${size / 3}px`;
-                    confetti.style.height = `${size}px`;
-                    confetti.style.borderRadius = `${size / 6}px`;
-                }
-
-                container.appendChild(confetti);
-
-                // Supprimer après l'animation
                 setTimeout(() => {
-                    confetti.remove();
-                }, duration * 1000);
-            }
+                    voiceLogo.style.width = '180px';
+                    voiceLogo.style.opacity = '1';
+                }, 100);
+
+                setTimeout(function() {
+                    // Afficher ensuite le logo The Voice Kids
+                    const voiceKidsLogo = document.createElement('img');
+                    voiceKidsLogo.src = 'The voice Kids.png';
+                    voiceKidsLogo.alt = 'The Voice Kids';
+                    voiceKidsLogo.style.width = '0';
+                    voiceKidsLogo.style.height = 'auto';
+                    voiceKidsLogo.style.opacity = '0';
+                    voiceKidsLogo.style.transition = 'all 1.5s ease';
+                    voiceKidsLogo.style.margin = '20px';
+                    document.getElementById('intro-overlay').appendChild(voiceKidsLogo);
+
+                    setTimeout(() => {
+                        voiceKidsLogo.style.width = '180px';
+                        voiceKidsLogo.style.opacity = '1';
+                    }, 100);
+
+                    setTimeout(function() {
+                        // Afficher le texte HOLY HOODPALACE
+                        const introText = document.getElementById('intro-text');
+                        introText.style.fontSize = '36px';
+                        introText.style.opacity = '1';
+
+                        setTimeout(function() {
+                            // Faire disparaître l'overlay
+                            const introOverlay = document.getElementById('intro-overlay');
+                            introOverlay.style.opacity = '0';
+
+                            setTimeout(function() {
+                                introOverlay.style.display = 'none';
+                                document.querySelector('.container').classList.add('visible');
+                                createConfetti();
+
+                                // Démarrer la musique de fond après l'animation d'intro
+                                const backgroundMusic = document.getElementById('background-music');
+                                backgroundMusic.volume = 0.5;
+                                backgroundMusic.play().catch(e => console.log('Lecture automatique bloquée par le navigateur'));
+                            }, 1000);
+                        }, 2000);
+                    }, 1500);
+                }, 1500);
+            }, 1500);
+        }, 500);
+
+        // Le reste du code reste identique...
+
+    // Gestion des contrôles audio
+    const backgroundMusic = document.getElementById('background-music');
+    const playPauseBtn = document.getElementById('play-pause-btn');
+    const stopBtn = document.getElementById('stop-btn');
+    const volumeSlider = document.getElementById('volume-slider');
+    const nowPlaying = document.getElementById('now-playing');
+    const currentTrack = document.getElementById('current-track');
+
+    // État de lecture
+    let isPlaying = false;
+    let currentPerformance = null;
+
+    // Fonction pour mettre à jour l'affichage du bouton play/pause
+    function updatePlayPauseButton() {
+        if (isPlaying) {
+            playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            nowPlaying.classList.add('visible');
+        } else {
+            playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+            nowPlaying.classList.remove('visible');
         }
+    }
 
-        // Fonction pour initialiser les particules
-        function initParticles() {
-            const canvas = document.getElementById('particles-canvas');
-            const ctx = canvas.getContext('2d');
-
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-
-            const particles = [];
-            const particleCount = 50;
-
-            // Créer les particules
-            for (let i = 0; i < particleCount; i++) {
-                particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    radius: Math.random() * 2 + 1,
-                    color: '#d4af37',
-                    speedX: Math.random() * 0.5 - 0.25,
-                    speedY: Math.random() * 0.5 - 0.25,
-                    opacity: Math.random() * 0.5 + 0.2
-                });
-            }
-
-            // Animer les particules
-            function animate() {
-                requestAnimationFrame(animate);
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-                for (let i = 0; i < particleCount; i++) {
-                    const p = particles[i];
-
-                    ctx.beginPath();
-                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(212, 175, 55, ${p.opacity})`;
-                    ctx.fill();
-
-                    // Déplacer la particule
-                    p.x += p.speedX;
-                    p.y += p.speedY;
-
-                    // Rebondir sur les bords
-                    if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
-                    if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
-
-                    // Connecter les particules proches
-                    for (let j = i + 1; j < particleCount; j++) {
-                        const p2 = particles[j];
-                        const dx = p.x - p2.x;
-                        const dy = p.y - p2.y;
-                        const distance = Math.sqrt(dx * dx + dy * dy);
-
-                        if (distance < 100) {
-                            ctx.beginPath();
-                            ctx.strokeStyle = `rgba(212, 175, 55, ${0.2 * (1 - distance / 100)})`;
-                            ctx.lineWidth = 0.5;
-                            ctx.moveTo(p.x, p.y);
-                            ctx.lineTo(p2.x, p2.y);
-                            ctx.stroke();
-                        }
-                    }
-                }
-            }
-
-            animate();
-
-            // Redimensionner le canvas lors du redimensionnement de la fenêtre
-            window.addEventListener('resize', function() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            });
-
-            // Faire suivre les particules au mouvement de la souris
-            window.addEventListener('mousemove', function(e) {
-                const mouseX = e.clientX;
-                const mouseY = e.clientY;
-
-                for (let i = 0; i < particleCount; i++) {
-                    const p = particles[i];
-                    const dx = mouseX - p.x;
-                    const dy = mouseY - p.y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-
-                    if (distance < 150) {
-                        const angle = Math.atan2(dy, dx);
-                        const force = (150 - distance) / 1500;
-                        p.speedX += Math.cos(angle) * force;
-                        p.speedY += Math.sin(angle) * force;
-                    }
-
-                    // Limiter la vitesse
-                    const speed = Math.sqrt(p.speedX * p.speedX + p.speedY * p.speedY);
-                    if (speed > 2) {
-                        p.speedX = (p.speedX / speed) * 2;
-                        p.speedY = (p.speedY / speed) * 2;
-                    }
-                }
-            });
+    // Gestion du bouton play/pause
+    playPauseBtn.addEventListener('click', function() {
+        if (isPlaying) {
+            backgroundMusic.pause();
+            isPlaying = false;
+        } else {
+            backgroundMusic.play();
+            isPlaying = true;
+            currentTrack.textContent = 'Musique de fond';
         }
+        updatePlayPauseButton();
+    });
+
+    // Gestion du bouton stop
+    stopBtn.addEventListener('click', function() {
+        backgroundMusic.pause();
+        backgroundMusic.currentTime = 0;
+        isPlaying = false;
+        updatePlayPauseButton();
+    });
+
+    // Gestion du volume
+    volumeSlider.addEventListener('input', function() {
+        backgroundMusic.volume = this.value;
+    });
+
+    // Animation des performances au survol
+    const performances = document.querySelectorAll('.performance');
+    performances.forEach(perf => {
+    perf.addEventListener('mouseenter', function() {
+    this.querySelector('.shine').style.animation = 'shine 1.5s';
+    });
+
+    perf.addEventListener('mouseleave', function() {
+    this.querySelector('.shine').style.animation = 'none';
+    setTimeout(() => {
+    this.querySelector('.shine').style.animation = 'shine 3s infinite';
+    }, 10);
+    });
+
+    // Gestion du clic pour afficher/masquer l'iframe et gérer l'audio
+    perf.addEventListener('click', function() {
+        // Arrêter la musique de fond
+        backgroundMusic.pause();
+        isPlaying = false;
+        updatePlayPauseButton();
+
+        // Fermer toutes les autres performances et arrêter leurs iframes
+        performances.forEach(p => {
+            if (p !== this && p.classList.contains('active')) {
+                p.classList.remove('active');
+                const iframe = p.querySelector('iframe');
+                // Recharger l'iframe pour arrêter l'audio
+                const src = iframe.src;
+                iframe.src = '';
+                setTimeout(() => {
+                    iframe.src = src;
+                }, 100);
+            }
+        });
+
+        // Basculer l'état actif de cette performance
+        this.classList.toggle('active');
+
+        // Si cette performance est active, mettre à jour le texte "Lecture en cours"
+        if (this.classList.contains('active')) {
+            const performer = this.querySelector('.performer').textContent;
+            const song = this.querySelector('.song').textContent;
+            currentTrack.textContent = `${performer} - ${song}`;
+            nowPlaying.classList.add('visible');
+        } else {
+            nowPlaying.classList.remove('visible');
+        }
+    });
+    });
+
+    // Effet de parallaxe
+    window.addEventListener('scroll', function() {
+    const scrollY = window.scrollY;
+    document.querySelector('.parallax-bg').style.transform = `translateY(${scrollY * 0.3}px)`;
+    });
+
+    // Fonction pour mettre à jour un compte à rebours spécifique
+    function updateCountdown(targetDate, daysId, hoursId, minutesId, secondsId, titleId, completedMessage) {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById(daysId).innerText = days.toString().padStart(2, '0');
+        document.getElementById(hoursId).innerText = hours.toString().padStart(2, '0');
+        document.getElementById(minutesId).innerText = minutes.toString().padStart(2, '0');
+        document.getElementById(secondsId).innerText = seconds.toString().padStart(2, '0');
+
+        if (distance < 0) {
+            document.getElementById(daysId).innerText = '00';
+            document.getElementById(hoursId).innerText = '00';
+            document.getElementById(minutesId).innerText = '00';
+            document.getElementById(secondsId).innerText = '00';
+
+            if (titleId) {
+                const countdownTitle = document.querySelector(titleId);
+                countdownTitle.innerText = completedMessage || "C'EST MAINTENANT !";
+                countdownTitle.style.color = '#ff9d00';
+            }
+            return true; // Indique que le compte à rebours est terminé
+        }
+        return false; // Indique que le compte à rebours est toujours en cours
+    }
+
+    // Dates cibles pour les trois comptes à rebours
+    const artistsArrivalDate = new Date('May 17, 2025 16:00:00').getTime();
+    const showStartDate = new Date('May 17, 2025 17:30:00').getTime();
+    const performanceDate = new Date('May 17, 2025 18:30:00').getTime();
+
+    // Fonction pour mettre à jour tous les comptes à rebours
+    function updateAllCountdowns() {
+        const artistsCompleted = updateCountdown(
+            artistsArrivalDate,
+            'artists-days', 'artists-hours', 'artists-minutes', 'artists-seconds',
+            '.countdown-container:nth-of-type(1) .countdown-title',
+            "LES ARTISTES SONT ARRIVÉS !"
+        );
+
+        const showCompleted = updateCountdown(
+            showStartDate,
+            'show-days', 'show-hours', 'show-minutes', 'show-seconds',
+            '.countdown-container:nth-of-type(2) .countdown-title',
+            "LA SOIRÉE A COMMENCÉ !"
+        );
+
+        const performanceCompleted = updateCountdown(
+            performanceDate,
+            'performance-days', 'performance-hours', 'performance-minutes', 'performance-seconds',
+            '.countdown-container:nth-of-type(3) .countdown-title',
+            "C'EST L'HEURE DE LA PERFORMANCE !"
+        );
+
+        // Si tous les comptes à rebours sont terminés, on peut arrêter l'intervalle
+        if (artistsCompleted && showCompleted && performanceCompleted) {
+            clearInterval(countdownInterval);
+        }
+    }
+
+    // Initialiser tous les comptes à rebours
+    updateAllCountdowns();
+    const countdownInterval = setInterval(updateAllCountdowns, 1000);
+
+    // Fonction de recherche
+    const searchBox = document.getElementById('search-box');
+    searchBox.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+
+        performances.forEach(perf => {
+            const performer = perf.querySelector('.performer').textContent.toLowerCase();
+            const song = perf.querySelector('.song').textContent.toLowerCase();
+            const original = perf.querySelector('.original').textContent.toLowerCase();
+
+            if (performer.includes(searchTerm) || song.includes(searchTerm) || original.includes(searchTerm)) {
+                perf.style.display = 'block';
+            } else {
+                perf.style.display = 'none';
+            }
+        });
+    });
+
+    // Initialisation des particules
+    initParticles();
+    });
+
+    // Fonction pour créer des confettis
+    function createConfetti() {
+    const confettiCount = 100;
+    const container = document.body;
+
+    for (let i = 0; i < confettiCount; i++) {
+    const confetti = document.createElement('div');
+    confetti.className = 'confetti';
+
+    // Propriétés aléatoires
+    const size = Math.random() * 10 + 5;
+    const left = Math.random() * 100;
+    const delay = Math.random() * 5;
+    const duration = Math.random() * 5 + 5;
+    const color = Math.random() > 0.5 ? '#d4af37' : '#ffff';
+    const opacity = Math.random() * 0.7 + 0.3;
+
+    confetti.style.width = `${size}px`;
+    confetti.style.height = `${size}px`;
+    confetti.style.left = `${left}%`;
+    confetti.style.animationDelay = `${delay}s`;
+    confetti.style.animationDuration = `${duration}s`;
+    confetti.style.backgroundColor = color;
+    confetti.style.opacity = opacity;
+
+    // Forme aléatoire
+    if (Math.random() > 0.5) {
+    confetti.style.borderRadius = '50%';
+    } else if (Math.random() > 0.5) {
+    confetti.style.borderRadius = '0';
+    confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+    } else {
+    confetti.style.width = `${size / 3}px`;
+    confetti.style.height = `${size}px`;
+    confetti.style.borderRadius = `${size / 6}px`;
+    }
+
+    container.appendChild(confetti);
+
+    // Supprimer après l'animation
+    setTimeout(() => {
+    confetti.remove();
+    }, duration * 1000);
+    }
+    }
+
+    // Fonction pour initialiser les particules
+    function initParticles() {
+    const canvas = document.getElementById('particles-canvas');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+    const particleCount = 50;
+
+    // Créer les particules
+    for (let i = 0; i < particleCount; i++) {
+    particles.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    radius: Math.random() * 2 + 1,
+    color: '#d4af37',
+    speedX: Math.random() * 0.5 - 0.25,
+    speedY: Math.random() * 0.5 - 0.25,
+    opacity: Math.random() * 0.5 + 0.2
+    });
+    }
+
+    // Animer les particules
+    function animate() {
+    requestAnimationFrame(animate);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (let i = 0; i < particleCount; i++) {
+    const p = particles[i];
+
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(212, 175, 55, ${p.opacity})`;
+    ctx.fill();
+
+    // Déplacer la particule
+    p.x += p.speedX;
+    p.y += p.speedY;
+
+    // Rebondir sur les bords
+    if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+
+    // Connecter les particules proches
+    for (let j = i + 1; j < particleCount; j++) {
+    const p2 = particles[j];
+    const dx = p.x - p2.x;
+    const dy = p.y - p2.y;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+
+    if (distance < 100) {
+    ctx.beginPath();
+    ctx.strokeStyle = `rgba(212, 175, 55, ${0.2 * (1 - distance / 100)})`;
+    ctx.lineWidth = 0.5;
+    ctx.moveTo(p.x, p.y);
+    ctx.lineTo(p2.x, p2.y);
+    ctx.stroke();
+    }
+    }
+    }
+    }
+
+    animate();
+
+    // Redimensionner le canvas lors du redimensionnement de la fenêtre
+    window.addEventListener('resize', function() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    });
+
+    // Faire suivre les particules au mouvement de la souris
+    window.addEventListener('mousemove', function(e) {
+    const mouseX = e.clientX;
+    const mouseY = e.clientY;
+
+    for (let i = 0; i < particleCount; i++) {
+    const p = particles[i];
+    const dx = mouseX - p.x;
+    const dy = mouseY - p.y;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+
+    if (distance < 150) {
+    const angle = Math.atan2(dy, dx);
+    const force = (150 - distance) / 1500;
+    p.speedX += Math.cos(angle) * force;
+    p.speedY += Math.sin(angle) * force;
+    }
+
+    // Limiter la vitesse
+    const speed = Math.sqrt(p.speedX * p.speedX + p.speedY * p.speedY);
+    if (speed > 2) {
+    p.speedX = (p.speedX / speed) * 2;
+    p.speedY = (p.speedY / speed) * 2;
+    }
+    }
+    });
+    }
     </script>
 </body>
 </html>
